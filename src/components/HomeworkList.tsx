@@ -121,36 +121,36 @@ const HomeworkList = ({ urlRoot }: { urlRoot: string }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Homework</h1>
+      <h1 className="text-2xl font-bold mb-4 text-blue-600">Homework</h1>
 
       {/* Homework Table */}
       <table className="min-w-full bg-white">
         <thead>
           <tr>
-            <th className="py-2 px-4 border">ID</th>
-            <th className="py-2 px-4 border">Subject</th>
-            <th className="py-2 px-4 border">Title</th>
-            <th className="py-2 px-4 border">Description</th>
-            <th className="py-2 px-4 border">Actions</th>
+            <th className="py-2 px-4 border-b text-blue-600">ID</th>
+            <th className="py-2 px-4 border-b text-blue-600">Subject</th>
+            <th className="py-2 px-4 border-b text-blue-600">Title</th>
+            <th className="py-2 px-4 border-b text-blue-600">Description</th>
+            <th className="py-2 px-4 border-b text-blue-600">Actions</th>
           </tr>
         </thead>
         <tbody>
           {homeworks.map((homework) => (
-            <tr key={homework.id}>
-              <td className="py-2 px-4 border">{homework.id}</td>
-              <td className="py-2 px-4 border">{homework.subject}</td>
-              <td className="py-2 px-4 border">{homework.title}</td>
-              <td className="py-2 px-4 border">{homework.description}</td>
-              <td className="py-2 px-4 border">
+            <tr key={homework.id} className="hover:bg-blue-50">
+              <td className="py-2 px-4 border-b">{homework.id}</td>
+              <td className="py-2 px-4 border-b">{homework.subject}</td>
+              <td className="py-2 px-4 border-b">{homework.title}</td>
+              <td className="py-2 px-4 border-b">{homework.description}</td>
+              <td className="py-2 px-4 border-b flex space-x-2">
                 <button
                   onClick={() => handleUpdateHomework(homework)}
-                  className="bg-yellow-500 text-white py-1 px-2 rounded hover:bg-yellow-600"
+                  className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteHomework(homework.id)}
-                  className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600 ml-2"
+                  className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600"
                 >
                   Delete
                 </button>
@@ -162,7 +162,9 @@ const HomeworkList = ({ urlRoot }: { urlRoot: string }) => {
 
       {/* Add Homework Form */}
       <div className="mt-4">
-        <h3 className="font-bold text-lg mb-2">Add New Homework</h3>
+        <h3 className="font-bold text-lg mb-2 text-blue-600">
+          Add New Homework
+        </h3>
         <input
           type="text"
           placeholder="Subject"
@@ -201,7 +203,9 @@ const HomeworkList = ({ urlRoot }: { urlRoot: string }) => {
       {isModalOpen && selectedHomework && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
-            <h2 className="text-xl font-semibold mb-4">Edit Homework</h2>
+            <h2 className="text-xl font-semibold mb-4 text-blue-600">
+              Edit Homework
+            </h2>
 
             <input
               type="text"
@@ -245,7 +249,7 @@ const HomeworkList = ({ urlRoot }: { urlRoot: string }) => {
               </button>
               <button
                 onClick={closeModal}
-                className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
               >
                 Cancel
               </button>
