@@ -116,12 +116,14 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Students</h1>
+    <div className="container mx-auto p-6 bg-white rounded-lg ">
+      <h1 className="text-3xl font-bold text-blue-700 mb-6">Students</h1>
 
       {/* Add Student Form */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-4">Add New Student</h2>
+      <div className="mb-8 p-6 border border-gray-200 rounded-lg  bg-gray-50">
+        <h2 className="text-xl font-semibold text-blue-600 mb-4">
+          Add New Student
+        </h2>
         <div className="flex flex-col space-y-4">
           <input
             type="text"
@@ -129,7 +131,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
             value={newStudent.name}
             onChange={handleChange}
             placeholder="Name"
-            className="border p-2"
+            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <input
             type="email"
@@ -137,7 +139,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
             value={newStudent.email}
             onChange={handleChange}
             placeholder="Email"
-            className="border p-2"
+            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <input
             type="text"
@@ -145,7 +147,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
             value={newStudent.specialization}
             onChange={handleChange}
             placeholder="Specialization"
-            className="border p-2"
+            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <input
             type="number"
@@ -153,11 +155,11 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
             value={newStudent.year}
             onChange={handleChange}
             placeholder="Year"
-            className="border p-2"
+            className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <button
             onClick={handleAddStudent}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
           >
             Add Student
           </button>
@@ -165,20 +167,20 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
       </div>
 
       {/* Students Table */}
-      <table className="min-w-full bg-white">
+      <table className="min-w-full bg-white  rounded-lg">
         <thead>
-          <tr>
-            <th className="py-2 px-4 border">ID</th>
-            <th className="py-2 px-4 border">Name</th>
-            <th className="py-2 px-4 border">Email</th>
-            <th className="py-2 px-4 border">Specialization</th>
-            <th className="py-2 px-4 border">Year</th>
-            <th className="py-2 px-4 border">Actions</th>
+          <tr className="bg-blue-100">
+            <th className="py-2 px-4 border text-blue-700">ID</th>
+            <th className="py-2 px-4 border text-blue-700">Name</th>
+            <th className="py-2 px-4 border text-blue-700">Email</th>
+            <th className="py-2 px-4 border text-blue-700">Specialization</th>
+            <th className="py-2 px-4 border text-blue-700">Year</th>
+            <th className="py-2 px-4 border text-blue-700">Actions</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
-            <tr key={student.id}>
+            <tr key={student.id} className="hover:bg-blue-50 transition">
               {editingStudentId === student.id ? (
                 <>
                   <td className="py-2 px-4 border">{student.id}</td>
@@ -188,7 +190,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
                       name="name"
                       value={editingStudentData.name || ""}
                       onChange={handleEditingChange}
-                      className="border p-2"
+                      className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
                     />
                   </td>
                   <td className="py-2 px-4 border">
@@ -197,7 +199,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
                       name="email"
                       value={editingStudentData.email || ""}
                       onChange={handleEditingChange}
-                      className="border p-2"
+                      className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
                     />
                   </td>
                   <td className="py-2 px-4 border">
@@ -206,7 +208,7 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
                       name="specialization"
                       value={editingStudentData.specialization || ""}
                       onChange={handleEditingChange}
-                      className="border p-2"
+                      className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
                     />
                   </td>
                   <td className="py-2 px-4 border">
@@ -215,19 +217,19 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
                       name="year"
                       value={editingStudentData.year || ""}
                       onChange={handleEditingChange}
-                      className="border p-2"
+                      className="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
                     />
                   </td>
                   <td className="py-2 px-4 border">
                     <button
                       onClick={handleSaveStudent}
-                      className="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-600"
+                      className="bg-green-500 text-white py-1 px-2 rounded-md hover:bg-green-600"
                     >
                       Save
                     </button>
                     <button
                       onClick={handleCancelEdit}
-                      className="bg-gray-500 text-white py-1 px-2 rounded hover:bg-gray-600 ml-2"
+                      className="bg-gray-500 text-white py-1 px-2 rounded-md hover:bg-gray-600 ml-2"
                     >
                       Cancel
                     </button>
@@ -243,13 +245,13 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
                   <td className="py-2 px-4 border">
                     <button
                       onClick={() => handleEditStudent(student)}
-                      className="bg-yellow-500 text-white py-1 px-2 rounded hover:bg-yellow-600"
+                      className="bg-yellow-500 text-white py-1 px-2 rounded-md hover:bg-yellow-600"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteStudent(student.id)}
-                      className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600 ml-2"
+                      className="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 ml-2"
                     >
                       Delete
                     </button>
@@ -260,7 +262,10 @@ const StudentList = ({ urlRoot }: { urlRoot: string }) => {
           ))}
           {students.length === 0 && (
             <tr>
-              <td colSpan={6} className="py-2 px-4 border text-center">
+              <td
+                colSpan={6}
+                className="py-2 px-4 border text-center text-gray-500"
+              >
                 No students found.
               </td>
             </tr>

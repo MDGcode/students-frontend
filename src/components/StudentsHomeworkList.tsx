@@ -138,18 +138,18 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Students</h1>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold text-blue-600 mb-6">Students</h1>
 
       {/* Students Table */}
-      <table className="min-w-full bg-white">
-        <thead>
+      <table className="min-w-full bg-white shadow-md rounded-lg">
+        <thead className="bg-blue-500 text-white">
           <tr>
-            <th className="py-2 px-4 border">ID</th>
-            <th className="py-2 px-4 border">Name</th>
-            <th className="py-2 px-4 border">Email</th>
-            <th className="py-2 px-4 border">Specialization</th>
-            <th className="py-2 px-4 border">Year</th>
+            <th className="py-3 px-6 border">ID</th>
+            <th className="py-3 px-6 border">Name</th>
+            <th className="py-3 px-6 border">Email</th>
+            <th className="py-3 px-6 border">Specialization</th>
+            <th className="py-3 px-6 border">Year</th>
           </tr>
         </thead>
         <tbody>
@@ -157,13 +157,13 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
             <tr
               key={student.id}
               onClick={() => handleRowClick(student)}
-              className="cursor-pointer hover:bg-gray-100"
+              className="cursor-pointer hover:bg-blue-50"
             >
-              <td className="py-2 px-4 border">{student.id}</td>
-              <td className="py-2 px-4 border">{student.name}</td>
-              <td className="py-2 px-4 border">{student.email}</td>
-              <td className="py-2 px-4 border">{student.specialization}</td>
-              <td className="py-2 px-4 border">{student.year}</td>
+              <td className="py-2 px-6 border">{student.id}</td>
+              <td className="py-2 px-6 border">{student.name}</td>
+              <td className="py-2 px-6 border">{student.email}</td>
+              <td className="py-2 px-6 border">{student.specialization}</td>
+              <td className="py-2 px-6 border">{student.year}</td>
             </tr>
           ))}
         </tbody>
@@ -172,21 +172,23 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
       {/* Modal */}
       {isModalOpen && selectedStudent && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+            <h2 className="text-2xl font-semibold text-blue-600 mb-6">
               Homework for {selectedStudent.name}
             </h2>
 
-            <ul className="mb-4">
+            <ul className="space-y-4 mb-6">
               {homeworkList.map((homework) => (
-                <li key={homework.id} className="mb-2">
-                  <h3 className="font-bold text-lg">{homework.title}</h3>
+                <li key={homework.id} className="border-b pb-4">
+                  <h3 className="font-bold text-lg text-blue-600">
+                    {homework.title}
+                  </h3>
                   <p>Subject: {homework.subject}</p>
                   <p>Description: {homework.description}</p>
                   <p>Grade: {homework.StudentHomework.grade}</p>
                   <button
                     onClick={() => handleDeleteHomework(homework.id)}
-                    className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600 mt-2"
+                    className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600 mt-2"
                   >
                     Delete Homework
                   </button>
@@ -198,14 +200,16 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
             </ul>
 
             {/* Add Homework Form */}
-            <div>
-              <h3 className="font-bold text-lg mb-2">Add Homework</h3>
+            <div className="mb-6">
+              <h3 className="font-semibold text-lg text-blue-600 mb-3">
+                Add Homework
+              </h3>
               <select
                 value={newHomework.homeworkId}
                 onChange={(e) =>
                   setNewHomework({ ...newHomework, homeworkId: e.target.value })
                 }
-                className="border rounded w-full mb-2 p-2"
+                className="border rounded w-full mb-4 p-2"
               >
                 <option value="">Select Homework</option>
                 {homeworkOptions.map((homework) => (
@@ -221,11 +225,11 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
                 onChange={(e) =>
                   setNewHomework({ ...newHomework, grade: e.target.value })
                 }
-                className="border rounded w-full mb-2 p-2"
+                className="border rounded w-full mb-4 p-2"
               />
               <button
                 onClick={handleAddHomework}
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                className="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600"
               >
                 Add Homework
               </button>
@@ -233,7 +237,7 @@ const StudentHomeworkList = ({ urlRoot }: { urlRoot: string }) => {
 
             <button
               onClick={closeModal}
-              className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+              className="mt-4 bg-gray-500 text-white py-2 px-6 rounded hover:bg-gray-600"
             >
               Close
             </button>
